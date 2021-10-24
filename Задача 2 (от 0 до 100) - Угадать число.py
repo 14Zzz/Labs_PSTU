@@ -2,7 +2,7 @@ import random
 
 while True:
     print("Вам нужно угадать целое число от 0 до 100 (включительно) за 7 попыток - Удачи!")
-    r = random.randint(0, 100)
+    r = random.randint(0, 101)
     p = 0
     x = 1
     while 7 > p and r != x:
