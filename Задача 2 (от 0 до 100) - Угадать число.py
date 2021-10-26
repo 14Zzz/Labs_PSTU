@@ -1,25 +1,25 @@
 import random
 
 print("Для ывхода из программы введите: 1111")
-x = 0
-while x != 1111:
+Vvod = 0
+while Vvod != 1111:
     print("Вам нужно угадать целое число от 0 до 100 (включительно) за 7 попыток - Удачи!")
-    r = random.randint(0, 101)
-    p = 0
-    x = 1
-    while 7 > p and r != x and x != 1111:
-        if x == 1111:
+    Chislo = random.randint(0, 100)
+    Popitka = 0
+    Vvod = 1
+    while 7 > Popitka and Chislo != Vvod and Vvod != 1111:
+        if Vvod == 1111:
             break
-        p += 1
-        print("Попытка №", p)
+        Popitka += 1
+        print("Попытка №", Popitka)
         try:
-            x = int(input("Введите число: "))
+            Vvod = int(input("Введите число: "))
         except ValueError:
             print()
             print("Целое число выглядит не так, но ничего, все совершают ошибки - попробуй ещё раз")
             print()
             break
-        if x == r:
+        if Vvod == Chislo:
             print()
             print("Вы угадали!!!")
             print("""░░░░░░░██████╗░███████╗██████╗░░
@@ -29,13 +29,13 @@ while x != 1111:
 ░░╚═╝░░██║░░██║███████╗██║░░░░░░
 ░░░░░░░╚═╝░░╚═╝╚══════╝╚═╝░░░░░░""")
             print()
-        elif x > r and x != 1111:
+        if Vvod > Chislo and Vvod != 1111:
             print("Загаданное число меньше введенного")
             print()
-        elif x < r and x != 1111:
+        if Vvod < Chislo and Vvod != 1111:
             print("Загаданное число больше введенного")
             print()
-        if p == 7 and x != r:
+        if Popitka == 7 and Vvod != Chislo:
             print("Проигрывать всегда больно...")
-            print("Загаданное число было -", r)
+            print("Загаданное число было -", Chislo)
             print()
