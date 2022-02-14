@@ -1,5 +1,5 @@
 #include<iostream>
-#include<complex>
+
 using namespace std;
 
 int min (int n, int first, ...)
