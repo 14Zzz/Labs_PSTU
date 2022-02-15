@@ -8,8 +8,8 @@ int min (int n, ...)
     int a;
     va_list ptr;
     va_start(ptr, n);
-    int mi = 2147483647;
-    for (int i = 0; i < n; i++)
+    int mi = va_arg(ptr, int) ;
+    for (int i = 1; i < n; i++)
     {
     	a = va_arg(ptr, int);
     	if (a < mi)
