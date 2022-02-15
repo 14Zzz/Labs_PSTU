@@ -1,27 +1,32 @@
 #include<iostream>
+#include<stdarg.h>
 
 using namespace std;
 
-int min (int n, int first, ...)
+int min (int n, ...)
 {
-    int* ptr = &first;
-    int mi = *ptr;
-    for (n; n != 0; n--)    // Можно while (n--)
+    int a;
+    va_list ptr;
+    va_start(ptr, n);
+    int mi = 2147483647;
+    for (int i = 0; i < n; i++)
     {
-        if (mi > *ptr)
-        {
-            mi = *ptr;
-        }
-        ptr += 2;   // int = 2 байта => +2 на сдвиг??
+    	a = va_arg(ptr, int);
+    	if (a < mi)
+    	{
+    		mi = a;
+    	}
     }
+    va_end(ptr);
     return mi;
 }
 
-
 int main()
 {
-    cout << min(5, 9, 4, 14, 7689, 4) << endl;
+	cout << min(5, 9, 4, 14, 7689, 4) << endl;
     cout << min(10, -1, 14, 1, 18, -27, 26, 0, 8, 9, 50) << endl;
     cout << min(12, 65, 78, 345, 87, 34, 23, 89, 34, 45, 234, 768, 12) << endl;
     return 0;
 }
+
+
