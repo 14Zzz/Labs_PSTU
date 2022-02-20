@@ -21,7 +21,7 @@ int main()
     setlocale(LC_ALL, "Russian");
 
     // Ввод числа элементов
-    int strok = 6, stolbcov = 7;
+    int const stolbcov = 7, strok = 6;
     
     // Создание массива
 
