@@ -31,7 +31,7 @@ int sedlovie (int matr[][3], int M, int N)
                    if (matr[i][j]==maxc)
                    { 
                       cout << "Седловая точка: " << (matr[i][j]) << endl;
-                      break;
+
                    }
          }
      }
