@@ -88,5 +88,5 @@ int main()
     }
     
     // Передача матрицы в функцию
-    cout << sedlovie (matr, strok, stolbcov);
+    sedlovie (matr, strok, stolbcov);
 }
