@@ -4,11 +4,11 @@ using namespace std;
 
 void ShelSort(int a[], int n)
 {
-    int i, j, d, tmp;
+    int d, j, tmp;
     d = n / 2;
     while (d > 0)
     {
-        for (i = 0; i < n - d; i++)
+        for (int i = 0; i < n - d; i++)
         {
             j = i;
             while (j >= 0 && a[j] > a[j+d])
@@ -33,7 +33,7 @@ int main()
 {
     setlocale(LC_ALL, "Russian");
     
-    int n, d, tmp = -1, o = 1;
+    int n;
     cout << "Введите количество элементов массива: ";
     cin >> n;
     
