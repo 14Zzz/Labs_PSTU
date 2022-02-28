@@ -4,7 +4,6 @@ using namespace std;
 
 void HanBashn(int n, int b1, int btmp, int b2, int c[])
 {
-    int D = n;
     if (n != 0)
     {
         HanBashn(n - 1, b1, b2, btmp, c);
