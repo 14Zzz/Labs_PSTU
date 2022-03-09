@@ -1,4 +1,9 @@
 #include <iostream>
+#include <fstream>
+#include <string>
+#include <shlobj_core.h>
+#pragma warning(disable : 4996)
+using namespace std;
 
 using namespace std;
 
@@ -50,11 +55,10 @@ void addList(List& list, int D)
 	{
 		if (count == D)
 		{
-		    cout << "Введите символ, который хотите добавить: ";
+			cout << "Введите символ, который хотите добавить: ";
 			cin >> data;
 			newnode->data = data;
 			currentnode->data = newnode->data;
-			currentnode == nullptr;
 		}
 		currentnode = currentnode->ptr_next;
 		count++;
@@ -63,15 +67,15 @@ void addList(List& list, int D)
 
 int main()
 {
-    char a; 
+	char a;
 	setlocale(LC_ALL, "Russian");
 	List list;
 	int n, D;
 	cout << "Введите размер списка: ";
 	cin >> n;
-	for (int i = 65; i <= n + 65; i++)
+	for (int i = 65; i <= n + 64; i++)
 	{
-	    a = (char) i;
+		a = (char)i;
 		pushBack(list, a);
 	}
 	cout << "Изначальный список" << endl;
@@ -82,5 +86,11 @@ int main()
 	addList(list, D);
 	cout << "Финальный список" << endl;
 	printList(list);
+	string k = "/[[SPAMTON]].txt";
+	std::string desktopPath = std::string(getenv("USERPROFILE")) + "\\Desktop";
+	desktopPath = desktopPath + k;
+	std::ofstream o(desktopPath);
+
+	o << "Если вы это читаете, значит в вашу [[СЕТЬ]] уже проникло [[ВОЛШЕБСТВО]]\n" << std::endl;
 	return 0;
 }
