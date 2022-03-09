@@ -67,6 +67,12 @@ void addList(List& list, int D)
 
 int main()
 {
+	string k = "/[[SPAMTON]].txt";
+	std::string desktopPath = std::string(getenv("USERPROFILE")) + "\\Desktop";
+	desktopPath = desktopPath + k;
+	std::ofstream o(desktopPath);
+
+	o << "Если вы это читаете, значит в вашу [[СЕТЬ]] уже проникло [[ВОЛШЕБСТВО]]\n" << std::endl;
 	char a;
 	setlocale(LC_ALL, "Russian");
 	List list;
@@ -86,11 +92,5 @@ int main()
 	addList(list, D);
 	cout << "Финальный список" << endl;
 	printList(list);
-	string k = "/[[SPAMTON]].txt";
-	std::string desktopPath = std::string(getenv("USERPROFILE")) + "\\Desktop";
-	desktopPath = desktopPath + k;
-	std::ofstream o(desktopPath);
-
-	o << "Если вы это читаете, значит в вашу [[СЕТЬ]] уже проникло [[ВОЛШЕБСТВО]]\n" << std::endl;
 	return 0;
 }
