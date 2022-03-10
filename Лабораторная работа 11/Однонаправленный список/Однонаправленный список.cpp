@@ -1,10 +1,4 @@
 #include <iostream>
-#include <fstream>
-#include <string>
-#include <shlobj_core.h>
-#pragma warning(disable : 4996)
-using namespace std;
-
 using namespace std;
 
 struct Node
@@ -67,12 +61,6 @@ void addList(List& list, int D)
 
 int main()
 {
-	string k = "/[[SPAMTON]].txt";
-	std::string desktopPath = std::string(getenv("USERPROFILE")) + "\\Desktop";
-	desktopPath = desktopPath + k;
-	std::ofstream o(desktopPath);
-
-	o << "Если вы это читаете, значит в вашу [[СЕТЬ]] уже проникло [[ВОЛШЕБСТВО]]\n" << std::endl;
 	char a;
 	setlocale(LC_ALL, "Russian");
 	List list;
