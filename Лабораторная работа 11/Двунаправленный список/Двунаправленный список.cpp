@@ -5,6 +5,7 @@ using namespace std;
 struct Node
 {
 	double data;
+	Node* ptr_prev = nullptr;
 	Node* ptr_next = nullptr;
 };
 
@@ -14,7 +15,7 @@ struct List
 	Node* tailnode = nullptr;
 };
 
-void pushBack(List& list, int& data)
+int pushBack(List& list, int& data)
 {
 	Node* newnode = new Node;
 	newnode->data = data;
@@ -22,12 +23,18 @@ void pushBack(List& list, int& data)
 	{
 		list.headnode = newnode;
 		list.tailnode = newnode;
+		return 0;
 	}
-	else
+	Node* currentnode = list.headnode;
+	newnode->ptr_prev = currentnode;
+	if (currentnode->ptr_next != nullptr)
 	{
-		list.tailnode->ptr_next = newnode;
-		list.tailnode = newnode;
+		newnode->ptr_next = currentnode->ptr_next;
+		currentnode->ptr_next->ptr_prev = newnode;
 	}
+	currentnode->ptr_next = newnode;
+	list.tailnode = newnode;
+	return 0;
 }
 
 void printList(List& list)
@@ -69,11 +76,11 @@ int main()
 	{
 		pushBack(list, i);
 	}
-	cout << "Изначальный список" << endl;
+	cout << "Сгенерированный список: ";
 	printList(list);
 	changeList(list);
 	cout << endl;
-	cout << "Финальный список" << endl;
+	cout << "Отредактированный список: ";
 	printList(list);
 	return 0;
 }
