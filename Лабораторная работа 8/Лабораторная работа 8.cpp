@@ -55,9 +55,28 @@ int main()
         }
         
         cout << "Содержимое файла: " << endl << endl;
+        
         ifstream file;
         file.open("file.txt");
         PrintTXT(file);
+        
+        fstream clear_file("test.txt", ios::out);
+        
+        cout << "Добавьте ученика" << endl;
+        string str;
+        cout << "Введите ФИО: ";
+        getline(cin, str);
+        Skolnik[5].FIO = str;
+        cout << "Введите Класс: ";
+        getline(cin, str);
+        Skolnik[5].klass = str;
+        cout << "Введите телефон: ";
+        getline(cin, str);
+        Skolnik[5].telnumber = str;
+        cout << "Введите оценки по математике, физикe, русскому языку, литературе (цифры через пробел): ";
+        getline(cin, str);
+        Skolnik[5].otmetki = str;
+
     }
     else
     {
