@@ -11,12 +11,11 @@ struct Scoolers
         string klass;
         string telnumber;
         string otmetki;
-        void Print() {cout << FIO << klass << telnumber << otmetki << endl;}
     };
 
 Scoolers* Skolnik = new Scoolers[6];
 
-void PrintTXT(ifstream & file)
+void PrintTXT(fstream & file)
 {
     string s; 
     while(getline(file, s))
@@ -25,7 +24,7 @@ void PrintTXT(ifstream & file)
     }
 }
 
-void AddTXT(ofstream & file, Scoolers S)
+void AddTXT(fstream & file, Scoolers S)
 {
     file << "ФИО: " << S.FIO << endl;
     file << "Класс: " << S.klass << endl;
@@ -44,8 +43,7 @@ int main()
     Skolnik[3] = {"Патласов Владислав Максимович", "9Г", "89468317184", "4, 4, 4, 4"};
     Skolnik[4] = {"Чащухин Максим Николаевич", "11А", "8904123456", "2, 3, 4, 4"};
     
-    ofstream file;
-    file.open("file.txt");
+    fstream file("file.txt", ios::trunc | ios::in | ios::out);
     if (file.is_open())
     {
         cout << "Файл открыт" << endl;
@@ -56,13 +54,13 @@ int main()
         
         cout << "Содержимое файла: " << endl << endl;
         
-        ifstream file;
+        
+        fstream file;
         file.open("file.txt");
         PrintTXT(file);
         
-        fstream clear_file("test.txt", ios::out);
         
-        cout << "Добавьте ученика" << endl;
+        cout << "Добавьте ученика, он станет первым в списке" << endl;
         string str;
         cout << "Введите ФИО: ";
         getline(cin, str);
@@ -73,10 +71,25 @@ int main()
         cout << "Введите телефон: ";
         getline(cin, str);
         Skolnik[5].telnumber = str;
-        cout << "Введите оценки по математике, физикe, русскому языку, литературе (цифры через пробел): ";
+        cout << "Введите оценки по математике, физикe, русскому языку, литературе: ";
         getline(cin, str);
         Skolnik[5].otmetki = str;
+        
+        cout << endl << endl << "Новое cодержимое файла: " << endl << endl;
 
+        file.clear();
+        AddTXT(file, Skolnik[5]);
+        
+        for (int i = 0; i < 5; i++)
+        {
+            AddTXT(file, Skolnik[i]);
+        }
+        
+        file.close();
+        file.clear();
+        file.open("file.txt");
+        PrintTXT(file);
+        
     }
     else
     {
