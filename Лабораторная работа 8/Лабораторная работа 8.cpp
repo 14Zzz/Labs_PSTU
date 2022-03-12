@@ -5,7 +5,6 @@
 using namespace std;
 
 
-
 struct Scoolers
     {
         string FIO;
@@ -17,13 +16,20 @@ struct Scoolers
 
 Scoolers* Skolnik = new Scoolers[6];
 
-
+void PrintTXT(ifstream & file)
+{
+    string s; 
+    while(getline(file, s))
+    { 
+        cout << s << endl; 
+    }
+}
 
 void AddTXT(ofstream & file, Scoolers S)
 {
-    file << S.FIO << endl;
-    file << S.klass << endl;
-    file << S.telnumber << endl;
+    file << "ФИО: " << S.FIO << endl;
+    file << "Класс: " << S.klass << endl;
+    file << "Телефон: " << S.telnumber << endl;
     file << "Отметки по предметам (математика, физика, русский язык, литература): " << S.otmetki << endl;
     file << endl;
 }
@@ -33,10 +39,10 @@ void AddTXT(ofstream & file, Scoolers S)
 int main()
 {
     Skolnik[0] = {"Еремеев Дмитрий Сергеевич", "9В", "86483965735", "4, 4, 2, 3"};
-    Skolnik[1] = {"Полушкин Игорь Александрович", "11 А", "89765685382", "4, 4, 5, 5"};
-    Skolnik[2] = {"Красов Александр Игоревич", "10 В", "81749628381", "5, 5, 5, 5"};
-    Skolnik[3] = {"Патласов Владислав Максимович", "9 Г", "89468317184", "4, 4, 4, 4"};
-    Skolnik[4] = {"Чащухин Максим Николаевич", "11 А", "8904123456", "2, 3, 4, 4"};
+    Skolnik[1] = {"Полушкин Игорь Александрович", "11А", "89765685382", "4, 4, 5, 5"};
+    Skolnik[2] = {"Красов Александр Игоревич", "10В", "81749628381", "5, 5, 5, 5"};
+    Skolnik[3] = {"Патласов Владислав Максимович", "9Г", "89468317184", "4, 4, 4, 4"};
+    Skolnik[4] = {"Чащухин Максим Николаевич", "11А", "8904123456", "2, 3, 4, 4"};
     
     ofstream file;
     file.open("file.txt");
@@ -47,6 +53,11 @@ int main()
         {
             AddTXT(file, Skolnik[i]);
         }
+        
+        cout << "Содержимое файла: " << endl << endl;
+        ifstream file;
+        file.open("file.txt");
+        PrintTXT(file);
     }
     else
     {
