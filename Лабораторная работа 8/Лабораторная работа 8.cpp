@@ -107,7 +107,7 @@ int main()
         file.clear();
         file.open("file.txt");
         PrintTXT(file);
-        
+        file.close();
     }
     else
     {
