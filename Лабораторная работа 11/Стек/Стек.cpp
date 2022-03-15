@@ -86,8 +86,9 @@ int main()
     cout << endl << "Сформированый стек: " << endl;
 
     PrintStack(stack, smax);
-    cout << endl << "Введите номер ячейки стека, после которого добавить элемент: ";
+    cout << endl << "Введите номер ячейки стека на место которой нужно поместить элемент: ";
     cin >> n;
+    n--;
     
     
     Node* currentnode = stack.headnode;
@@ -98,7 +99,7 @@ int main()
         currentnode = currentnode->ptr_next_node;
     }
     
-    cout << "Введите добовляемый элемент: ";
+    cout << "Введите элемент: ";
     cin.get();
     getline(cin, s);
     if (s.length() > smax.length())
