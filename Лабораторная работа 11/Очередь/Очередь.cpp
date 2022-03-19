@@ -60,10 +60,9 @@ void changeQueue(Queue& queue)
 int main()
 {
     double s;
-    int n, N;
+    int n;
     cout << "Введите количество элементов очереди: ";
     cin >> n;
-    N = n;
     Queue queue;
     Queue TMPqueue;
     cin.get();
