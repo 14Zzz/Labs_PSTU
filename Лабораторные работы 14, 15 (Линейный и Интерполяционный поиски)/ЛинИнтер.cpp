@@ -23,6 +23,7 @@ void ShelSort(int a[], int n)
 }
 int main()
 {
+        setlocale(LC_ALL, "rus");
 	int n, s, z, c;
 	int key, left,right,mid;
 	cout << "Введите количество элементов: ";
