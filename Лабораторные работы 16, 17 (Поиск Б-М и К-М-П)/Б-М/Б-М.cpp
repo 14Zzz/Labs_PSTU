@@ -22,7 +22,7 @@ int sdvig(char a, string s)
 int main()
 {
     setlocale(LC_ALL, "rus");
-    string S, s, S1;
+    string S, s;
     int c = 1, n = 0, t;
     cout << "Введите строку: ";
     getline(cin, S);
