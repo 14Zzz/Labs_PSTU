@@ -1,21 +1,49 @@
-
-#include<iostream>
 #include<string>
+#include<iostream>
 using namespace std;
 
-int a_max = -1;
-
-int sdvig(char a, string s)
+int kmp(string str, string tmp)
 {
-    for (int i = 0; i < s.length(); i++)
+    int i,j,strLen,tmpLen;
+    strLen = str.size();
+    tmpLen = tmp.size();
+    int* d = new int [tmpLen];
+    i = 0; 
+    j = -1; 
+    d[0] = -1;
+    while (i < tmpLen - 1)
     {
-        if (s[i] == a)
+        while ((j>=0) && (tmp[j] != tmp[i]))
         {
-            return i;
+            j = d[j];
         }
-        else if (i == s.length() - 1)
+        i++;
+        j++; 
+        if (tmp[i] == tmp[j])
         {
-            return a_max;
+            d[i] = d[j];
+        }
+        else 
+        {
+            d[i] = j;
+        }
+        i = 0;
+        j = 0;
+        for (i = 0, j = 0; (i <=strLen - 1) && (j<= tmpLen - 1); i++,j++)
+        {
+            while ((j>=0) && (tmp[j] != str[i]))
+            {
+                j = d[j];
+            }
+        }
+        delete[] d;
+        if (j == tmpLen)
+        {
+            return i-j;
+        }
+        else
+        {
+            return -1;
         }
     }
 }
@@ -23,64 +51,18 @@ int sdvig(char a, string s)
 int main()
 {
     setlocale(LC_ALL, "rus");
-    string S, s;
-    int c = 1, n = 0, t;
+    string S,s;
     cout << "Введите строку: ";
     getline(cin, S);
     cout << "Введите подстроку, которую нужно удалить: ";
     getline(cin, s);
-    int ptr = s.length() - 1;
-    int *a = new int [s.length()];
-    for (int i = s.length() - 2; i >= 0; i--)
+    if (kmp(S, s) != -1)
     {
-        a[i] = c;
-        c += 1;
+        S.erase(kmp(S, s) + s.length() - 1, 1);
+        cout << "Обновленная строка: "<< S;
     }
-    for (int i = s.length() - 2; i >= 0; i--)
+    else
     {
-        for (int j = 0; j < i; j++)
-        {
-            if (s[j] == s[i])
-            {
-                a[j] = a[i];
-            }
-        }
-    }
-    a[s.length() - 1] = a[0] + 1;
-    for (int j = 0; j < s.length() - 2; j++)
-    {
-        if (s[j] == s[s.length() - 1])
-        {
-            a[s.length() - 1] = a[j];
-        }
-    }
-    for (int i=0; i<s.length(); i++)
-    {
-        if (a[i] > a_max)
-        {
-            a_max = i;
-        }
-    }
-    while (ptr < S.length())
-    {
-    	t = ptr;
-    	for (int i = s.length() - 1; i >= 0; i--)
-    	{
-    		if (S[t] != s[i])
-    		{
-    			ptr += a[sdvig(S[t], s)];
-    			if (ptr >= S.length())
-    			cout << "Подстрока не найдена";
-    			break;
-    		}
-    		if (S[t] == s[i] && i == 0)
-    		{
-    			S.erase(ptr - s.length() + 1, s.length());
-    			cout << " Обновленная строка: " << S;
-    			ptr = S.length();
-    		}
-    		t--;
-    	}
-    	c++;
+        cout << "Подстрока не найдена";
     }
 }
