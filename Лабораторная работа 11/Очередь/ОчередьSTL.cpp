@@ -18,7 +18,7 @@ void DelQ(int n)
 {
     queue <double> qTMP;
     for (int i = 1; i <= n; i++)
-	{
+    {
         if (i % 2 == 0)
         {
             qTMP.push(q.front());
@@ -28,7 +28,7 @@ void DelQ(int n)
         {
             q.pop();
         }
-	}
+    }
 	q = qTMP;
 }
 int main()
