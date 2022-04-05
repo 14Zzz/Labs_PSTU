@@ -51,6 +51,11 @@ class Money
                 RUB += KOP / 100;
                 KOP %= 100;
             }
+            if (KOP < 0)
+            {
+                RUB -= 1;
+                KOP += 100;
+            }
     		return *this;
     	}
     	
@@ -62,6 +67,11 @@ class Money
             {
                 RUB += KOP / 100;
                 KOP %= 100;
+            }
+            if (KOP < 0)
+            {
+                RUB -= 1;
+                KOP += 100;
             }
     		return *this;
     	}
