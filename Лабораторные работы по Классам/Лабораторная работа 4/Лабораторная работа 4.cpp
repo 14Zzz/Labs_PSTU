@@ -118,6 +118,7 @@ Long Long::operator*(const Long& L)
 }
 int main()
 {
+        setlocale(LC_ALL, "rus");
 	Pair A, B;
 	cin >> A >> B;
 	cout << "Pair A = " << A << endl;
