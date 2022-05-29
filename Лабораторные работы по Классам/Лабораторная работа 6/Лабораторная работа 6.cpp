@@ -74,7 +74,7 @@ public:
         return *this;
     }
 
-    Plenty& operator+(Plenty& plen)
+    Plenty operator+(const Plenty plen)
     {
         int c = 0;
         int s = this->size + plen.size;
@@ -88,7 +88,6 @@ public:
             tmp.data[i] = plen.data[c];
             c++;
         }
-        cout << tmp;
         return tmp;
     }
 
@@ -155,7 +154,7 @@ void main()
     cin >> a >> b;
     cout << a;
     cout << b;
-    a + b;
+    cout << a + b;
     a[0] = 666;
     cout << a;
     Iterator i = a.first();
